@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { NextAuthProvider } from '@/lib/Provider'
+import Navbar from '@/components/Navbar'
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -28,7 +30,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <NextAuthProvider>
+        <Navbar />
+          <main className="flex justify-center items-start p-6 min-h-screen">
+            {children}
+          </main>
+        </NextAuthProvider>
       </body>
     </html>
   );
